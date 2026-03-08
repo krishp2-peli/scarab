@@ -90,4 +90,5 @@ $(BUILD_DIR_PREFIX)/%/Makefile:
 	  CC=$(CC)      \
 	  CXX=$(CXX)     \
 	  ASM=$(AS)   \
-	  $(CMAKE) ../.. -DCMAKE_BUILD_TYPE=$(BUILD_TYPE)
+	  $(CMAKE) $(SRCPWD) -DCMAKE_BUILD_TYPE=$(BUILD_TYPE) \
+	    -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Widgets=TRUE

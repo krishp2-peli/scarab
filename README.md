@@ -6,6 +6,14 @@ Install:
   - `export SCARAB_ENABLE_PT_MEMTRACE=1`
 3. `cd src && make`
 
+4. updated bash script to run on multiple machines (my edits)
+
+- `cd scarab`
+- `./setup_scarab.sh --jobs 4`
+- `source ./scarab_env.sh`
+- `cd src`
+- `make -j4`
+
 Run:
 1. Copy: `src/PARAMS.sunny_cove` into your run directory and rename to `PARAMS.in`
 2. Run: `src/scarab --frontend memtrace --cbp_trace_r0=<MEMTRACE_FILE>`

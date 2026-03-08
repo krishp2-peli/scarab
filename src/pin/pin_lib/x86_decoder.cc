@@ -1358,7 +1358,10 @@ void init_pin_opcode_convert(void) {
   iclass_to_scarab_map[XED_ICLASS_SYSCALL]  = {OP_IADD, -1, 1, NONE};
   iclass_to_scarab_map[XED_ICLASS_SYSENTER] = {OP_IADD, -1, 1, NONE};
   iclass_to_scarab_map[XED_ICLASS_SYSRET] = {OP_IADD, -1, 1, NONE};
+  // Older Pin/XED kits (e.g., Pin 3.5) do not define SYSRET64.
+#ifdef XED_ICLASS_SYSRET64
   iclass_to_scarab_map[XED_ICLASS_SYSRET64] = {OP_IADD, -1, 1, NONE};
+#endif
 
   iclass_to_scarab_map[XED_ICLASS_SWAPGS]  = {OP_MOV,-1,1,NONE};
   iclass_to_scarab_map[XED_ICLASS_TEST]     = {OP_LOGIC, -1, 1, NONE};

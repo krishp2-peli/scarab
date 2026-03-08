@@ -31,6 +31,16 @@ if(DEFINED ENV{SCARAB_ENABLE_PT_MEMTRACE})
   add_subdirectory(dynamorio)
   add_library(pt_memtrace INTERFACE)
 
+  find_library(SNAPPY_LIB NAMES snappy libsnappy.so.1)
+  if(NOT SNAPPY_LIB)
+    message(FATAL_ERROR "Could not find snappy library (libsnappy).")
+  endif()
+
+  find_library(CONFIGPP_LIB NAMES config++ libconfig++.so.9)
+  if(NOT CONFIGPP_LIB)
+    message(FATAL_ERROR "Could not find libconfig++ library.")
+  endif()
+
   target_include_directories(pt_memtrace
     INTERFACE
     ${CMAKE_BINARY_DIR}/deps/dynamorio/include/
@@ -61,9 +71,9 @@ if(DEFINED ENV{SCARAB_ENABLE_PT_MEMTRACE})
     drcontainers
     drmemtrace_analyzer
     xed
-    snappy
+    ${SNAPPY_LIB}
     dl
-    config++
+    ${CONFIGPP_LIB}
     z
     rt
     pthread
