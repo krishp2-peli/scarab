@@ -8,6 +8,7 @@ out/
 results/
 rollups/
 tools/
+traces/
 
 # intermediate compilation files
 *.o

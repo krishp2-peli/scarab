@@ -18,6 +18,18 @@ Run:
 1. Copy: `src/PARAMS.sunny_cove` into your run directory and rename to `PARAMS.in`
 2. Run: `src/scarab --frontend memtrace --cbp_trace_r0=<MEMTRACE_FILE>`
 
+Download a Google trace:
+1. Default destination is `traces/<workload>/`
+2. Run:
+
+```bash
+cd /afs/ece.cmu.edu/usr/krishp2/Private/18742-proj/scarab
+
+./download_google_trace.sh \
+  --workload arizona \
+  --trace-file 16362031984258116688.1171988.memtrace.zip
+```
+
 # Scarab
 
 Scarab is a cycle accurate simulator for state-of-the-art, high performance,
