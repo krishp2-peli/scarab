@@ -89,6 +89,11 @@ if [[ "${DO_BUILD}" -eq 1 ]]; then
   (
     cd "${SRC_DIR}"
     source "${ENV_FILE}"
+    # Build outputs embed absolute source paths, so a copied repo must
+    # discard stale artifacts before rebuilding in its new location.
+    rm -rf build pin/pin_exec/obj-intel64 pin/pin_trace/obj-intel64
+    make clean_pin_exec
+    make pin_exec
     make -j"${JOBS}"
   )
 else
